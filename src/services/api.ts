@@ -6,7 +6,7 @@ export async function sendMessage(query: string): Promise<APIResponse> {
     try {
         const request: APIRequest = {query};
 
-        const response = await fetch('${API_BASE_URL}/chat', {
+        const response = await fetch(`${API_BASE_URL}/chat`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
