@@ -15,7 +15,7 @@ export async function sendMessage(query: string): Promise<APIResponse> {
         });
 
         if (!response.ok) {
-            throw new Error('API error: ${reponse.status} ${reponse.statusTest}');
+            throw new Error(`API error: ${response.status} ${response.statusText}`);
         }
 
         return await response.json();
