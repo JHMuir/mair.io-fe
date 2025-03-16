@@ -9,7 +9,7 @@ export interface Message {
 
 export interface ChatState {
     messages: Message[];
-    isThinking: boolean;
+    isLoading: boolean;
     error: string | null;
 }
 
