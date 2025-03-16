@@ -9,7 +9,7 @@ export function useChat() {
     // Initialization
     const [chatState, setChatState] = useState<ChatState>({
         messages: [],
-        isThinking: false,
+        isLoading: false,
         error: null
     });
 
@@ -28,7 +28,7 @@ export function useChat() {
             setChatState(prevState => ({
                 ...prevState,
                 messages: [...prevState.messages, userMessage],
-                isThinking: true,
+                isLoading: true,
                 error: null
             }));
 
@@ -44,12 +44,12 @@ export function useChat() {
             setChatState(prevState => ({
                 ...prevState,
                 messages: [...prevState.messages, assistantMessage],
-                isThinking: true,
+                isLoading: true,
             }));
         } catch(error) {
             setChatState(prevState => ({
                 ...prevState,
-                isThinking: false,
+                isLoading: false,
                 error: error instanceof Error ? error.message : 'An unknown error occurred'
             }));
         }
@@ -58,14 +58,14 @@ export function useChat() {
     const clearChat = useCallback(() => {
         setChatState({
           messages: [],
-          isThinking: false,
+          isLoading: false,
           error: null
         });
     }, []);
     
     return {
         messages: chatState.messages,
-        isLoading: chatState.isThinking,
+        isLoading: chatState.isLoading,
         error: chatState.error,
         sendMessage: sendUserMessage,
         clearChat
