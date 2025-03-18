@@ -44,7 +44,7 @@ export function useChat() {
             setChatState(prevState => ({
                 ...prevState,
                 messages: [...prevState.messages, assistantMessage],
-                isLoading: true,
+                isLoading: false,
             }));
         } catch(error) {
             setChatState(prevState => ({
